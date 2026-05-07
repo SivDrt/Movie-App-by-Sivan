@@ -1,28 +1,199 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background-color: #f5f5f5; color: #333; }
+/* --- index.css --- */
+:root {
+  --primary-color: #00bcd4; /* תכלת-טורקיז נקי */
+  --primary-dark: #0097a7; /* טורקיז כהה יותר להובר */
+  --bg-color: #ffffff; /* רקע לבן נקי */
+  --sidebar-bg: #1a1a1a; /* שחור-פחם עמוק יותר */
+  --sidebar-text: #eaeaea;
+  --text-main: #333333;
+  --text-muted: #757575;
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* צל עדין מאוד ומודרני */
+  --transition: 0.3s ease; /* אנימציה חלקה לכל האלמנטים */
+}
 
-/* פריסת המסך (Sidebar ו-Content) */
-.app-container { display: flex; min-height: 100vh; }
-.sidebar { width: 250px; background-color: #111; color: white; padding: 20px; display: flex; flex-direction: column; }
-.sidebar h2 { color: #ff3333; margin-bottom: 30px; display: flex; align-items: center; gap: 10px;}
-.nav-link { color: #ccc; text-decoration: none; padding: 12px 15px; margin-bottom: 10px; border-radius: 8px; transition: 0.3s; }
-.nav-link:hover, .nav-link.active { background-color: #222; color: white; }
-.content { flex: 1; padding: 40px; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* גופן מודרני יותר */
+}
 
-/* רשת הכרטיסיות */
-.movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;}
-.movie-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #eaeaea; }
-.movie-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-.movie-genre { background: #eee; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: #555; }
-.movie-desc { font-size: 0.9rem; color: #666; margin-bottom: 20px; line-height: 1.5; }
-.delete-btn { background-color: #e63946; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; width: 100%; }
-.delete-btn:hover { background-color: #c1121f; }
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
 
-/* טפסים וחיפוש */
-.form-container { background: white; padding: 30px; border-radius: 12px; max-width: 500px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.input-group { margin-bottom: 20px; display: flex; flex-direction: column; }
-.input-group label { font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
-.input-group input, .input-group textarea { padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
-.submit-btn { background-color: #111; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; font-size: 1rem; }
-.submit-btn:hover { background-color: #333; }
-.search-input { width: 100%; max-width: 600px; padding: 15px; font-size: 1.1rem; border: 2px solid #ccc; border-radius: 10px; margin-bottom: 30px; }
+/* --- פריסת המסך (Sidebar ו-Content) --- */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 270px; /* רחב מעט יותר */
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  position: sticky; /* נשאר מקובע בצד */
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  color: #ffffff;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.sidebar h2::before {
+  content: '🎬'; /* אייקון לפני הכותרת */
+}
+
+.nav-link {
+  color: var(--sidebar-text);
+  text-decoration: none;
+  padding: 15px 18px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  transition: var(--transition);
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* אפקט הובר עדין בתפריט */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateX(5px); /* תזוזה קלה ימינה */
+}
+
+/* קישור פעיל - מודגש בתכלת */
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2);
+}
+
+.content {
+  flex: 1;
+  padding: 50px;
+  background-color: #fcfcfc; /* לבן מעט שונה לרקע התוכן */
+}
+
+.content h1 {
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+/* --- רשת הכרטיסיות --- */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* --- טפסים וחיפוש --- */
+.form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 550px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid #eaeaea;
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: #fdfdfd;
+}
+
+/* אפקט פוקוס - התכלת מופיע במסגרת */
+.input-group input:focus, .input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+  background: white;
+}
+
+.input-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  width: 100%;
+  font-size: 1rem;
+  transition: var(--transition);
+  text-transform: uppercase; /* אותיות גדולות לאפקט מודרני */
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 5px 15px rgba(0, 151, 167, 0.3);
+  transform: translateY(-2px); /* קפיצה קלה למעלה */
+}
+
+.submit-btn:active {
+  transform: translateY(1px); /* אפקט לחיצה */
+}
+
+/* --- שורת חיפוש --- */
+.search-container {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 650px;
+  padding: 18px 25px;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: var(--transition);
+  box-shadow: var(--card-shadow);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 20px rgba(0, 188, 212, 0.1);
+}
