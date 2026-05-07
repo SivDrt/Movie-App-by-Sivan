@@ -1,4 +1,3 @@
-// --- src/pages/AllMovies.jsx ---
 import { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
 

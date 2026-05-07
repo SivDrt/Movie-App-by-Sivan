@@ -10,15 +10,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// החיבור ל-MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB! ✅'))
     .catch(err => console.error('Connection error:', err));
 
-// הפעלת הנתיבים
 app.use('/movies', movieRoutes);
 
-// נתיב אוטומטי ליצירת נתוני בדיקה (Seed)
 app.get('/seed', async (req, res) => {
     try {
         await Movie.create({

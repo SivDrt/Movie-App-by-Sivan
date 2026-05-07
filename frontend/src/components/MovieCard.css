@@ -1,20 +1,18 @@
-/* --- src/components/MovieCard.css (Sivix Style) --- */
 .movie-card {
   background: white;
-  border-radius: 24px; /* פינות בועתיות ומודרניות */
+  border-radius: 24px; 
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* צל רך מאוד של Sivix */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(0, 0, 0, 0.02); /* קו עדין כמעט שקוף */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* אנימציה חלקה */
+  border: 1px solid rgba(0, 0, 0, 0.02); 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-/* אפקט הובר (hover) מרחף */
 .movie-card:hover {
-  transform: translateY(-8px); /* קפיצה קלה למעלה */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06); /* צל עמוק יותר בהובר */
+  transform: translateY(-8px); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06); 
   border-color: #e2e8f0;
 }
 
@@ -47,7 +45,7 @@
 }
 
 .movie-body {
-  flex: 1; /* לוקח את כל השטח הפנוי */
+  flex: 1; 
   margin-bottom: 25px;
 }
 
@@ -67,12 +65,12 @@
 }
 
 .card-actions {
-  margin-top: auto; /* דוחף לתחתית הכרטיסייה */
+  margin-top: auto; 
 }
 
 .delete-btn {
   background: white;
-  color: #ff4757; /* אדום Sivix */
+  color: #ff4757; 
   border: 1.5px solid #ff4757;
   border-radius: 12px;
   padding: 12px;

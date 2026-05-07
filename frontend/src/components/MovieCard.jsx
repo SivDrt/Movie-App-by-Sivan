@@ -1,6 +1,5 @@
-// --- src/components/MovieCard.jsx ---
 import React from 'react';
-import './MovieCard.css'; // נדאג שהעיצוב יוטען
+import './MovieCard.css'; 
 
 const MovieCard = ({ movie, onDelete }) => {
   return (
