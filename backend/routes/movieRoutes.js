@@ -9,7 +9,7 @@ router.post('/generate', async (req, res) => {
         const response = await axios.post(
             "https://ai-gateway.vercel.sh/v1/chat/completions",
             {
-                model: "openai/gpt-4o-mini", // המודל המעודכן והנכון
+                model: "openai/gpt-4o-mini", 
                 messages: [
                     { 
                         role: "system", 
@@ -32,7 +32,6 @@ router.post('/generate', async (req, res) => {
 
         res.json({ description: response.data.choices[0].message.content });
     } catch (err) {
-        // זה ידפיס לנו בטרמינל אם יש עוד בעיה
         console.error("AI Error Details:", err.response?.data || err.message);
         res.status(500).json({ message: "Failed to generate description" });
     }
