@@ -1,3 +1,4 @@
+// --- src/pages/AllMovies.jsx ---
 import { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
 
@@ -20,14 +21,25 @@ const AllMovies = () => {
   };
 
   return (
-    <div>
-      <h1>All Movies</h1>
-      <p>{movies.length} movies in your watchlist</p>
-      <div className="movies-grid">
-        {movies.map(movie => (
-          <MovieCard key={movie._id} movie={movie} onDelete={deleteMovie} />
-        ))}
-      </div>
+    <div className="page-wrapper">
+      <header className="page-header">
+        <h1>All Movies</h1>
+        <p className="page-subtitle">You have {movies.length} movies in yourcollection</p>
+      </header>
+      
+      <section className="movies-container">
+        {movies.length > 0 ? (
+          <div className="movies-grid">
+            {movies.map(movie => (
+              <MovieCard key={movie._id} movie={movie} onDelete={deleteMovie} />
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <p>Your watchlist is empty. Start by adding some movies! 🍿</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 };

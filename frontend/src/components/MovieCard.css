@@ -1,47 +1,49 @@
-/* --- src/components/MovieCard.css --- */
+/* --- src/components/MovieCard.css (Sivix Style) --- */
 .movie-card {
   background: white;
-  border-radius: 16px; /* פינות עגולות יותר ומודרניות */
-  padding: 25px;
-  box-shadow: var(--card-shadow);
+  border-radius: 24px; /* פינות בועתיות ומודרניות */
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* צל רך מאוד של Sivix */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #f0f0f0;
-  transition: var(--transition); /* אנימציה לכניסה/הובר */
+  border: 1px solid rgba(0, 0, 0, 0.02); /* קו עדין כמעט שקוף */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* אנימציה חלקה */
 }
 
-/* אפקט הובר על הכרטיסייה עצמה - מודגש עדין */
+/* אפקט הובר (hover) מרחף */
 .movie-card:hover {
-  transform: translateY(-5px); /* קפיצה קלה למעלה */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* צל עמוק יותר בהובר */
-  border-color: #e0e0e0;
+  transform: translateY(-8px); /* קפיצה קלה למעלה */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06); /* צל עמוק יותר בהובר */
+  border-color: #e2e8f0;
 }
 
 .movie-header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* ממרכז ויזואלית */
+  align-items: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f1f5f9;
   padding-bottom: 15px;
 }
 
 .movie-header h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #222;
+  color: var(--text-dark);
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .movie-genre {
-  background-color: rgba(0, 188, 212, 0.1); /* תכלת עדין ושקוף */
-  color: var(--primary-dark);
-  padding: 5px 12px;
+  background-color: #f1f5f9;
+  color: var(--text-light);
+  padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .movie-body {
@@ -51,16 +53,17 @@
 
 .movie-desc {
   font-size: 0.95rem;
-  color: var(--text-main);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
 .movie-desc strong {
   display: block;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-light);
   margin-bottom: 5px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .card-actions {
@@ -68,16 +71,16 @@
 }
 
 .delete-btn {
-  background-color: #e74c3c; /* אדום פחות בוהק */
-  color: white;
-  border: none;
+  background: white;
+  color: #ff4757; /* אדום Sivix */
+  border: 1.5px solid #ff4757;
+  border-radius: 12px;
   padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   width: 100%;
-  font-size: 0.95rem;
-  transition: var(--transition);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,11 +88,11 @@
 }
 
 .delete-btn:hover {
-  background-color: #c0392b; /* אדום כהה יותר להובר */
-  box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
-  transform: translateY(-2px); /* קפיצה קלה למעלה */
+  background-color: #ff4757;
+  color: white;
+  box-shadow: 0 8px 15px rgba(255, 71, 87, 0.2);
 }
 
 .delete-btn:active {
-  transform: translateY(1px); /* אפקט לחיצה */
+  transform: translateY(1px);
 }
